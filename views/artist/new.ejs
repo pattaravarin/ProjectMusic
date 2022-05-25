@@ -1,0 +1,28 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="container">
+    <h1>Add new Artist</h1>
+<form action="/artist" method="POST" enctype="multipart/form-data">
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Artist Name</label>
+    <input type="text" class="form-control" name="artist[artistname]" placeholder="artist name">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <input type="file" class="form-control" name="artistImage" accept='image/*'>
+  </div>
+
+  <!-- <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Music</label>
+    <input type="file" class="form-control" name="music" accept='audio/*'>
+  </div> -->
+
+  <button type="submit" class="btn btn-warning">Submit</button>
+  <a href="/artist" class="btn btn-dark">Go back</a>
+</form>
+
+
+</div>
+
+<%- include("../partials/footer.ejs") %>

@@ -1,0 +1,58 @@
+<%- include("../partials/header.ejs") %>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Artist Page</h1>
+      <% if(currentUser && currentUser.isAdmin){ %>
+      <p>
+        <a href="/artist/new" class="btn btn-warning my-2">Add New Artist</a>
+      </p>
+      <% } %>
+  </div>
+</section>
+
+</div>
+<div class="album py-5 ">
+  <div class="container BackgroundDetail">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% artist.forEach(function(artist){ %>
+      <div class="col">
+        <div class="card shadow-sm">
+         <img src="<%= artist.artistImage %>" height="300px" class="image-size">
+
+          <div class="card-body">
+            <p class="card-text">Title : <%= artist.artistname %></p>
+            
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="/artist/<%= artist._id %>" class="btn btn-sm btn-outline-secondary">View</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+  <div class="album py-5 ">
+    <div class="container BackgroundDetail">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        
+      </div>
+    </div>
+  </div>
+  
+<%- include("../partials/footer.ejs") %>

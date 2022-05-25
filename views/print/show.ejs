@@ -1,0 +1,48 @@
+<%- include("../partials/header.ejs") %>
+<script src="/lyrics/lyrics.js" defer></script>
+
+<h1 class="textCenter">Title : <%= print.name %></h1>
+<img src="<%= print.image %>" class="imgCenter">
+
+<div align="center">
+<audio controls src="<%= print.music %>"></audio> 
+</div>
+
+
+<p class="textCenter">Artist : <%= print.Artist %></p>
+<!-- <p class="textCenter">Submitted by <%= print.author.username %></p> -->
+
+<button onclick="myFunction()">เปิด/ปิด เนื้อเพลง</button>
+<div id="myDIV"><%= print.lyrics %></div>
+
+<!-- ปุ่ม -->
+<% if  ((currentUser && currentUser.isAdmin)){ %>
+<a href="/prints/<%= print._id %>/edit" class="btn btn-secondary">Edit</a>
+ <!-- ปุ่มลบยาวนิดนึง -->
+ <form id="delete-form" action="/prints/<%= print._id %>?_method=DELETE" method="POST">
+     <button type='submit' class="btn btn-secondary">Delete</button>
+ </form>    
+<% } %>
+
+<div>
+<a href="/prints/<%= print._id %>/comments/new" class="btn btn-info">Add new comment</a>
+<a href="/prints" class="btn btn-warning">Go back</a>
+</div>
+
+<h2>Comments :</h2>
+<% print.comments.forEach(function(comment){ %>
+    <p>
+        <strong><%= comment.author.username %></strong> - <%= comment.text %>
+    </p>
+    <!-- ปุ่ม -->
+<% if (currentUser && comment.author.id.equals(currentUser._id) || (currentUser && currentUser.isAdmin)){ %>
+    <a href="/prints/<%= print._id %>/comments/<%= comment._id %>/edit" class="btn btn-secondary">Edit</a>
+     <!-- ปุ่มลบยาวนิดนึง -->
+     <form id="delete-form" action="/prints/<%= print._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+         <button type='submit' class="btn btn-secondary">Delete</button>
+     </form>    
+    <% } %>
+<% }) %>
+
+
+<%- include("../partials/footer.ejs") %>

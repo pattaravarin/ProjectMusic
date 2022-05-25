@@ -1,0 +1,24 @@
+<%- include("../partials/header.ejs") %>
+<script src="/lyrics/lyrics.js" defer></script>
+
+<h1 class="textCenter">Artist : <%= artist.artistname %></h1>
+<img src="<%= artist.artistImage %>" class="imgCenter">
+
+<!-- <div align="center">
+<audio controls src="<%= artist.music %>"></audio>
+</div> -->
+
+
+<!-- ปุ่ม -->
+<% if ((currentUser && currentUser.isAdmin)){ %>
+<a href="/artist/<%= artist._id %>/edit" class="btn btn-secondary">Edit</a>
+ <!-- ปุ่มลบยาวนิดนึง -->
+ <form id="delete-form" action="/artist/<%= artist._id %>?_method=DELETE" method="POST">
+     <button type='submit' class="btn btn-secondary">Delete</button>
+ </form>    
+<% } %>
+
+
+
+
+<%- include("../partials/footer.ejs") %>

@@ -1,0 +1,39 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="container">
+    <h1>Add new Music</h1>
+<form action="/prints" method="POST" enctype="multipart/form-data">
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Music Name</label>
+    <input type="text" class="form-control" name="print[name]" placeholder="Song name">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Artist</label>
+    <input type="text" class="form-control" name="print[Artist]" placeholder="Artist name">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <input type="file" class="form-control" name="image" accept='image/*'>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Music</label>
+    <input type="file" class="form-control" name="music" accept='audio/*'>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Lyrics</label>
+    <input type="text" class="form-control" name="print[lyrics]" placeholder="Lyrics">
+  </div>
+
+  <!-- <input type="submit" value="submit"/> -->
+  <button type="submit" class="btn btn-warning">Submit</button>
+  <a href="/prints" class="btn btn-dark">Go back</a>
+</form>
+
+
+</div>
+
+<%- include("../partials/footer.ejs") %>

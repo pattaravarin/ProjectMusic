@@ -1,0 +1,42 @@
+<%- include("../partials/header.ejs") %>
+
+<!-- <script src="/likeButton.js" defer></script> -->
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <div class="album py-5 ">
+    <div class="container BackgroundDetail">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% foundUser.forEach(function(foundUser){ %>
+          <% if (foundUser.isAdmin === false){ %>
+        <div class="col">
+          <div class="card shadow-sm">
+           <img src="<%= foundUser.profileImage %>" height="300px" class="image-size">
+
+            <div class="card-body">
+              <p class="card-text"><%= foundUser.username %></p>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/user/<%= foundUser._id %>" class="btn btn-sm btn-outline-secondary">View</a>
+                  <form id="delete-form" action="/user/<%= foundUser._id %>?_method=DELETE" method="POST">
+                    <button type='submit' class="btn btn-secondary">Delete</button>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <% }); %>      
+      </div>
+    </div>
+  </div>
+
+  
+<%- include("../partials/footer.ejs") %>

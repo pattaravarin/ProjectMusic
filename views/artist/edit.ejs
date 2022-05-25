@@ -1,0 +1,30 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="container">
+    <h1>Edit</h1>
+<form action="/artist/<%= artist._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Artist Name</label>
+    <input type="text" class="form-control" name="artist[name]" placeholder="<%= artist.name %>", value="<%= artist.name %>">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <img src="<%= artist.image %>" height='300px'>
+    <input type="file" class="form-control" name="image" accept='image/*'>
+  </div>
+
+  <!-- <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Audio</label>
+    <img src="<%= print.music %>" height='300px'>
+    <input type="file" class="form-control" name="music" accept='music/*'>
+  </div> -->
+
+
+  <!-- <input type="submit" value="submit"/> -->
+  <button type="submit" class="btn btn-warning">Submit</button>
+  <a href="/artist" class="btn btn-dark">Go back</a>
+</form>
+</div>
+
+<%- include("../partials/footer.ejs") %>

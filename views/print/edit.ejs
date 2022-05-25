@@ -1,0 +1,39 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="container">
+    <h1>Edit</h1>
+<form action="/prints/<%= print._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Music Name</label>
+    <input type="text" class="form-control" name="print[name]" placeholder="<%= print.name %>", value="<%= print.name %>">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Artist</label>
+    <input type="text" class="form-control" name="print[Artist]" placeholder="<%= print.Artist %>" value="<%= print.Artist %>">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <img src="<%= print.image %>" height='300px'>
+    <input type="file" class="form-control" name="image" accept='image/*'>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Audio</label>
+    <img src="<%= print.music %>" height='300px'>
+    <input type="file" class="form-control" name="music" accept='music/*'>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Lyrics</label>
+    <input type="text" class="form-control" name="print[lyrics]" placeholder="<%= print.lyrics %>" value="<%= print.lyrics %>">
+  </div>
+
+  <!-- <input type="submit" value="submit"/> -->
+  <button type="submit" class="btn btn-warning">Submit</button>
+  <a href="/prints" class="btn btn-dark">Go back</a>
+</form>
+</div>
+
+<%- include("../partials/footer.ejs") %>
